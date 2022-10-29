@@ -1,36 +1,23 @@
-const circle = document.getElementById('circle');
-const playButton = document.getElementById('play-button');
-const speed = document.getElementById('speed');
+const circle = document.querySelector('#circle');
+const playButton = document.querySelector('#play-button');
+const speed = document.querySelector('#speed');
 
-playButton.addEventListener('click', () => {
+function handleUpdate() {
+  const suffix = this.dataset.sizing || '';
+  document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`);
+}
+
+speed.addEventListener('change', handleUpdate);
+speed.addEventListener('mousemove', handleUpdate);
+
+playButton.addEventListener('click', (e) => {
   const paused = circle.style.animationPlayState || 'paused';
   if (circle.style.animationPlayState = paused === 'paused') {
     circle.style.animationPlayState = 'running';
-    playButton.textContent = "Pause";
+    e.currentTarget.textContent = "Pause";
   } else {
     circle.style.animationPlayState = 'paused';
-    playButton.textContent = "Play";
+    e.currentTarget.textContent = "Play";
   }
 });
-
-speed.addEventListener('change', () => { 
-    let speedValue = parseInt(speed.value);
-    
-    if (speedValue ===  1) {
-      circle.classList.remove("slower", "faster", "super-fast");
-      circle.classList.add("super-slow"); 
-    } else if (speedValue ===  2) {
-      circle.classList.remove("super-slow", "faster", "super-fast");
-      circle.classList.add("slower"); 
-    } else if (speedValue ===  3) {
-      circle.classList.remove("super-slow", "slower", "faster", "super-fast");
-    } else if (speedValue ===  4){
-      circle.classList.remove("super-slow", "slower", "super-fast");
-      circle.classList.add("faster"); 
-    } else if (speedValue ===  5){
-      circle.classList.remove("super-slow", "slower", "faster");
-      circle.classList.add("super-fast"); 
-    } 
-  }
-)
 
