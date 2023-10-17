@@ -1,4 +1,4 @@
-# **Rotating Planet**
+# **Rotating Planet** &nbsp; ![Code Coverage](https://img.shields.io/badge/code--coverage-100%25-green)
 
 The Rotating Planet is an app that allows users to rotate an a fictitious planet and change his speed.
 
