@@ -36,4 +36,43 @@ describe('RotatingPlanet', () => {
       )
     })
   })
+
+  it('should set animation play state to running and update button text on click', () => {
+    const planetElement = planet.getPlanet()
+    const playButton = planet.getPlayButton()
+    // Set initial state to paused
+    planetElement.style.animationPlayState = 'paused'
+    playButton.textContent = 'Play'
+
+    playButton.dispatchEvent(new MouseEvent('click'))
+
+    expect(planetElement.style.animationPlayState).to.equal('running')
+    expect(playButton.textContent).to.equal('Pause')
+  })
+
+  it('should set animation play state to paused and update button text on click', () => {
+    const planetElement = planet.getPlanet()
+    const playButton = planet.getPlayButton()
+
+    // Set initial state to running
+    planetElement.style.animationPlayState = 'running'
+    playButton.textContent = 'Pause'
+
+    playButton.dispatchEvent(new MouseEvent('click'))
+
+    expect(planetElement.style.animationPlayState).to.equal('paused')
+    expect(playButton.textContent).to.equal('Play')
+  })
+
+  it('should update CSS variable on speed input change', () => {
+    const rootElement = document.documentElement
+    const speedRangeInput = planet.getSpeedRangeInput()
+    speedRangeInput.value = '39'
+    speedRangeInput.dispatchEvent(new Event('change'))
+
+    const cssPropertyValue = window
+      .getComputedStyle(rootElement)
+      .getPropertyValue('--speed')
+    expect(cssPropertyValue).to.equal('39s')
+  })
 })
