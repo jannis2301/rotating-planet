@@ -15,8 +15,10 @@ In this project I have created a fictitious planet. You can click on a play butt
 ## Technologies
 
 - HTML
-- CSS
-- JavaScript ES6
+- Sass
+- TypeScript
+- Vite
+- Vitest
 
 ## Sources
 
