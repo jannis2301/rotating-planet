@@ -7,7 +7,7 @@ describe('RotatingPlanet', () => {
   beforeEach(() => {
     const mockElement = document.createElement('div')
     mockElement.innerHTML = `
-      <div class="rotating-element" id="circle"></div>
+      <div id="planet"></div>
       <button id="play-button">Play</button>
       <input
         id="speed"
