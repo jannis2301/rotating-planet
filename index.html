@@ -4,27 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./resources/style/style.css" />
+    <link rel="stylesheet" href="/src/style.scss" />
     <title>The Rotating Planet</title>
   </head>
   <body>
-    <div class="rotating-element" id="circle"></div>
-    <div class="button-container">
-      <button id="play-button">Play</button>
-      <div class="speed-container">
-        <label for="speed">Speed:</label>
-        <input
-          id="speed"
-          name="speed"
-          type="range"
-          min="1"
-          max="40"
-          step="2"
-          data-sizing="s"
-        />
+    <div class="rotating-planet-container">
+      <div class="rotating-planet" id="planet"></div>
+      <div class="button-container">
+        <button id="play-button" class="play-button">Play</button>
+        <div class="speed-container">
+          <label for="speed">Speed:</label>
+          <input
+            id="speed"
+            name="speed"
+            type="range"
+            min="1"
+            max="40"
+            step="2"
+            data-sizing="s"
+          />
+        </div>
       </div>
     </div>
-
-    <script src="./resources/js/main.js"></script>
+    <script type="module" src="/src/index.ts"></script>
   </body>
 </html>
