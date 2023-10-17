@@ -1,0 +1,235 @@
+*:root {
+  --speed: 10s;
+  --planetSize: 200px;
+  --satelliteSize: 8px;
+
+  /* Color Variables */
+  --white: #fff;
+  --black: #000;
+  --lightBlue: #03a9f4;
+  --darkBlue: #3f51b5;
+  --lightGreen: #18d501;
+  --darkGreen: #205928;
+  --purple: #9c27b0e3;
+  --orange: #e9b41e;
+  --red: #e91e1e;
+  --playButtonBackground: #dc143c;
+  --playButtonHoverColor: #009688;
+  --thumbBackground: #439643;
+  --thumbBoxShadowColor: #00aa00;
+  --thumbBorderColor: #83e584;
+
+  /* Linear-Gradients */
+  --bodyBackground: linear-gradient(45deg, var(--black), var(--purple));
+  --planetBackground: linear-gradient(
+    90deg,
+    var(--black) 20%,
+    var(--lightBlue)
+  );
+  --speedContainerBackground: linear-gradient(
+    45deg,
+    var(--red) 35%,
+    var(--orange)
+  );
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+**::after,
+**::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  background: var(--bodyBackground);
+}
+
+.rotating-planet-container {
+  height: 100dvh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.rotating-planet {
+  position: relative;
+  width: var(--planetSize);
+  height: var(--planetSize);
+  background: var(--planetBackground);
+  border-radius: 50%;
+  border: 26px solid var(--white);
+  animation: rotate var(--speed) infinite linear;
+  animation-play-state: paused;
+
+  &::after {
+    content: '';
+    width: var(--satelliteSize);
+    height: var(--satelliteSize);
+    position: absolute;
+    top: -15px;
+    left: 85px;
+    background-color: var(--darkBlue);
+    border-radius: 50%;
+  }
+}
+
+.button-container {
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.play-button {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--playButtonBackground);
+  color: var(--white);
+  border-radius: 5px;
+  text-decoration: none;
+  border: 1px solid var(--white);
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--playButtonHoverColor);
+  }
+}
+
+.speed-container {
+  padding: 20px;
+  background: var(--speedContainerBackground);
+  color: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--white);
+}
+
+label[for='speed'] {
+  display: inline-block;
+  color: var(--white);
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  direction: rtl;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 12px;
+    box-shadow: 1px 1px 1px var(--black);
+    background: var(--darkGreen);
+    border-radius: 1px;
+    border: 1px solid var(--lightGreen);
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    box-shadow: 3px 3px 3px var(--thumbBoxShadowColor);
+    border: 2px solid var(--thumbBorderColor);
+    height: 23px;
+    width: 23px;
+    border-radius: 23px;
+    background: var(--thumbBackground);
+    -webkit-appearance: none;
+    margin-top: -7px;
+    cursor: pointer;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: var(--darkGreen);
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px var(--black);
+    background: var(--darkGreen);
+    border-radius: 1px;
+    border: 1px solid var(--lightGreen);
+  }
+
+  &::-moz-range-thumb {
+    box-shadow: 3px 3px 3px var(--thumbBoxShadowColor);
+    border: 2px solid var(--thumbBorderColor);
+    height: 23px;
+    width: 23px;
+    border-radius: 23px;
+    background: var(--thumbBackground);
+    cursor: pointer;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: var(--darkGreen);
+    border: 1px solid var(--lightGreen);
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px var(--black);
+  }
+
+  &::-ms-fill-upper {
+    background: var(--darkGreen);
+    border: 1px solid var(--lightGreen);
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px var(--black);
+  }
+
+  &::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 3px 3px 3px var(--thumbBoxShadowColor);
+    border: 2px solid var(--thumbBorderColor);
+    height: 23px;
+    width: 23px;
+    border-radius: 23px;
+    background: var(--thumbBackground);
+    cursor: pointer;
+  }
+
+  &:focus::-ms-fill-lower {
+    background: var(--darkGreen);
+  }
+
+  &:focus::-ms-fill-upper {
+    background: var(--darkGreen);
+  }
+}
+
+.running {
+  animation-play-state: running;
+}
